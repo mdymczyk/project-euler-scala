@@ -1,10 +1,10 @@
 apply plugin: 'scala'
 
-scalaVersion = '2.8.1'
+scalaVersion = '2.9.1'
 
 repositories {
 	mavenCentral()
-	mavenRepo name:'scala-releases', urls:'http://scala-tools.org/repo-releases/'
+	mavenRepo name:'scala-releases', urls:'http://scala-tools.org/repo-releases'
 }
 
 dependencies {
@@ -13,7 +13,15 @@ dependencies {
 
 	compile "org.scala-lang:scala-library:$scalaVersion"
 
-	testCompile "junit:junit:4.8",
-        	"org.scala-tools.testing:specs:1.6.1",
-        	"org.scala-lang:scala-compiler:$scalaVersion"
+	testCompile "org.scalatest:scalatest_2.9.1:1.6.1"
+}
+
+task test(overwrite: true, dependsOn: testClasses) << {
+    ant.taskdef(name: 'scalatest',
+        classname: 'org.scalatest.tools.ScalaTestAntTask',
+        classpath: sourceSets.test.runtimeClasspath.asPath
+    )
+    ant.scalatest(runpath: sourceSets.test.classesDir,
+        haltonfailure: 'true',
+        fork: 'false') {reporter(type: 'stdout')}
 }
