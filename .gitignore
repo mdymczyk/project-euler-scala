@@ -1,4 +1,6 @@
 *.class
 *.jar
+*.swp
 .DS_Store*
 build
+.gradle
