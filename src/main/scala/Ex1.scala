@@ -6,6 +6,10 @@ object Ex1 {
 		result
 	}
 
+	def sumMultiplesFilter(upperBound : Int) : Int = {
+		(1 until upperBound).filter(x => x % 3 == 0 || x % 5 == 0).foldLeft(0)(_ + _)
+	}
+
 	def main(args : Array[String]) {
 		println(sumMultiples(1000))
 	}
