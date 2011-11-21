@@ -1,0 +1,19 @@
+apply plugin: 'scala'
+
+scalaVersion = '2.8.1'
+
+repositories {
+	mavenCentral()
+	mavenRepo name:'scala-releases', urls:'http://scala-tools.org/repo-releases/'
+}
+
+dependencies {
+	scalaTools "org.scala-lang:scala-compiler:$scalaVersion",
+		"org.scala-lang:scala-library:$scalaVersion"
+
+	compile "org.scala-lang:scala-library:$scalaVersion"
+
+	testCompile "junit:junit:4.8",
+        	"org.scala-tools.testing:specs:1.6.1",
+        	"org.scala-lang:scala-compiler:$scalaVersion"
+}
