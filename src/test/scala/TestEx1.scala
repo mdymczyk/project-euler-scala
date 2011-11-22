@@ -1,5 +1,4 @@
 import org.scalatest.FunSuite
-import scala.collection.mutable.Stack
 
 class TestEx1 extends FunSuite {
 
